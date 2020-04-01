@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+   <title>Shopping Cart</title>
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" rel="stylesheet" />
+   <link href="style.css" rel="stylesheet">
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.0/jquery.js"></script>
+</head>
+
+<body>
+
+   <section>
+      <div class="container">
+         <div class="cart">
+            <div class="col-md-12 col-lg-10 mx-auto">
+               <div class="cart-item">
+                  <div class="row">
+                     <div class="col-md-6 center-item">
+                        <img src="images/product-1.png" alt="">
+                        <h5>iPhone 11 128GB Black</h5>
+                     </div>
+
+                     <div class="col-md-6 center-item">
+                        <div class="input-group number-spinner">
+                           <button class="btn btn-default" id="decrease" onclick="decreaseValue()"><i class="fas fa-minus"></i></button>
+                           <input type="text"  id="number" class="form-control text-center" value="1">
+                           <button class="btn btn-default" id="increase" onclick="incrementValue()"><i class="fas fa-plus"></i></button>
+                        </div>
+                        <!-- <h5 id="output">$1219</h5> -->
+                        <input type="text" id="output" value=1219 />
+                        <input type="reset" value="Reset" onclick="clearText()" />
+                     </div>
+                  </div>
+               </div>
+
+               <div class="cart-item">
+                  <div class="row">
+                     <div class="col-md-6 center-item mx-auto">
+                        <img src="images/product-2.png" alt="">
+                        <h5>iPhone 11 Silicone Case - Black</h5>
+                     </div>
+                     <div class="col-md-6 center-item">
+                        <div class="input-group number-spinner">
+                           <button class="btn btn-default" id="deccvr" onclick="deccvrValue()"><i class="fas fa-minus"></i></button>
+                           <input type="text" id="cvrnumber" class="form-control text-center" value="1">
+                           <button class="btn btn-default" id="inccvr" onclick="inccvrValue()"><i class="fas fa-plus"></i></button>
+
+                        </div>
+                        <!-- <h5>$59</h5>
+                        <img src="images/remove.png" alt="" class="remove-item"> -->
+
+                        <input type="text" id="outputcvr" value=1219 />
+                        <input type="reset" value="Reset" onclick="resetText()" />
+
+                     </div>
+                  </div>
+               </div>
+
+               <div class="cart-item">
+                  <div class="row">
+
+                     <div class="col-md-8">
+                        <h5>Subtotal: </h5>
+                        <h5>Tax:</h5>
+                        <h5>Total:</h5>
+                     </div>
+
+                     <div class="col-md-4 status">
+                        <h5>$1,278</h5>
+                        <h5>$0</h5>
+                        <h5>$1,278</h5>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-md-12 pt-4 pb-4">
+                  <button type="button" class="btn btn-success check-out">Check Out</button>
+               </div>
+            </div>
+         </div>
+      </div>
+   </section>
+</body>
+
+<script>
+
+  // For phone
+
+  function incrementValue()
+{
+    var value = parseInt(document.getElementById('number').value, 10);
+    value = isNaN(value) ? 0 : value;
+    value++;
+    document.getElementById('number').value = value;
+}
+
+function decreaseValue() {
+  var value = parseInt(document.getElementById('number').value, 10);
+  value = isNaN(value) ? 0 : value;
+  value < 1 ? value = 1 : '';
+  value--;
+  document.getElementById('number').value = value;
+}
+
+
+$('#increase').click(function() {
+    var rtn;  // I would avoid same variable name as element in HTML ..pers pref
+    rtn = +$("#output").val() +1219;  // Using inputs, can access the val
+    $('#output').val(rtn);
+    });
+
+
+    $('#decrease').click(function() {
+    var rtn;  // I would avoid same variable name as element in HTML ..pers pref
+    rtn = +$("#output").val() - 1219;  // Using inputs, can access the val
+    $('#output').val(rtn);
+    });
+
+    function clearText()  
+{
+    document.getElementById('output').value = 1219;
+    document.getElementById('number').value = 1;
+    
+}  
+
+
+// for Cover
+
+function inccvrValue()
+{
+    var value = parseInt(document.getElementById('cvrnumber').value, 10);
+    value = isNaN(value) ? 0 : value;
+    value++;
+    document.getElementById('cvrnumber').value = value;
+}
+
+function deccvrValue() {
+  var value = parseInt(document.getElementById('cvrnumber').value, 10);
+  value = isNaN(value) ? 0 : value;
+  value < 1 ? value = 1 : '';
+  value--;
+  document.getElementById('cvrnumber').value = value;
+}
+
+
+$('#inccvr').click(function() {
+    var rtn;  // I would avoid same variable name as element in HTML ..pers pref
+    rtn = +$("#outputcvr").val() +1219;  // Using inputs, can access the val
+    $('#outputcvr').val(rtn);
+    });
+
+
+    $('#deccvr').click(function() {
+    var rtn;  // I would avoid same variable name as element in HTML ..pers pref
+    rtn = +$("#outputcvr").val() - 1219;  // Using inputs, can access the val
+    $('#outputcvr').val(rtn);
+    });
+
+    function resetText()  
+{
+    document.getElementById('outputcvr').value = 1219;
+    document.getElementById('cvrnumber').value = 1;
+    
+} 
+
+</script>
+
+</html>
